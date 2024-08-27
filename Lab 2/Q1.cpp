@@ -29,7 +29,7 @@ int main()
 
     for(int i = 0; i < 3; i++) 
 	{
-        int* temp = new int[10];//each jogged array size is changed to 10 now
+        int* temp = new int[10];//each jagged array size is changed to 10 now
         for(int j = 0; j < Size[i]; j++) 
 		{
             temp[j] = arr[i][j];
