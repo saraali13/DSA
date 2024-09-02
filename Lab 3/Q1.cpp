@@ -15,6 +15,8 @@ Node *next;
 public:
 Node():data(0),next(NULL)
 {}
+Node(int data):data(data),next(NULL)
+{}
 friend class SingelyLinkedList;
 
 };
@@ -33,7 +35,7 @@ void InsertAtFront(const int x)
      Node *n= new Node(x);
      if (head==NULL)
      {
-        head=x;
+        head=n;
      }
      else
      {
@@ -62,7 +64,7 @@ void InsertAtTail(const int x)
 
 }
 
-void InsertAfterValue(const int vale,const int inseritngValue)
+void InsertAfterValue(const int value,const int inseritngValue)
 {
   if(head!= NULL)
   {
@@ -72,7 +74,7 @@ void InsertAfterValue(const int vale,const int inseritngValue)
     {
       currentPTR=currentPTR->next;
     }
-    n->next=currentPTR->next
+    n->next=currentPTR->next;
     currentPTR->next=n;
   }
   else
@@ -81,13 +83,13 @@ void InsertAfterValue(const int vale,const int inseritngValue)
   }
 }
 
-void InsertBeforeValue(const int vale,const int inseritngValue)
+void InsertBeforeValue(const int value,const int inseritngValue)
 {
   if(head!= NULL)
   {
     Node *n=new Node(inseritngValue);
     Node *currentPTR=head;
-    Npde *prev=NULL;
+    Node *prev=NULL;
     while(currentPTR!=NULL && currentPTR->data!=value)
     {
         prev=currentPTR;
@@ -143,7 +145,7 @@ void DeleteAt(const int n)
     {
         Node *CurrPTR=head;
         Node *Prev=NULL;
-        while(CurrPTR->next!=n)
+        while(CurrPTR->data!=n)
         {
             Prev=CurrPTR;
             CurrPTR=CurrPTR->next;
@@ -176,17 +178,29 @@ int countlist()
     }
     return count;
 }
+
+void PrintList()
+{
+    Node * curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<", ";
+        curr=curr->next;
+    }
+    cout<<"NULL\n";
+}
 };
 
 int main()
 {
     SingelyLinkedList* l1=new SingelyLinkedList() ;
-    l1.InsertAtFront(4);
-    l1.InsertAfterValue(2,6);
-    l1.InsertAtTail(37);
-    l1.InsertBeforeValue(3,8);
-    l1.countlist();
-    l1.DeleteStart();
-    l1.DeleteLast();
-    l1.DeleteAt(4);
+    l1->InsertAtFront(4);
+    l1->InsertAfterValue(2,6);
+    l1->InsertAtTail(37);
+    l1->InsertBeforeValue(3,8);
+    l1->countlist();
+    l1->DeleteStart();
+    l1->DeleteLast();
+    l1->DeleteAt(4);
+    l1->PrintList();
 }
