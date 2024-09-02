@@ -198,7 +198,8 @@ int main()
     l1->InsertAfterValue(2,6);
     l1->InsertAtTail(37);
     l1->InsertBeforeValue(3,8);
-    l1->countlist();
+    int num=l1->countlist();
+    cout<<num<<endl;
     l1->DeleteStart();
     l1->DeleteLast();
     l1->DeleteAt(4);
