@@ -19,7 +19,7 @@ int factNoTail(int n)
 
 int factTail(int n,int x = 1)
 {
-    if(n == 0)
+    if(n == 0 || n==1)
 	{
         return x;
     }
