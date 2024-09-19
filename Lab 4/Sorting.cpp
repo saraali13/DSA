@@ -66,7 +66,7 @@ void InsertionSort(int arr[],int n)
         else
         break;
       }
-    arr[j+1]=key;
+   // arr[j+1]=key; has no effect on the output
    }
 }
 
