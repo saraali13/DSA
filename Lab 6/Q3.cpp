@@ -22,73 +22,73 @@ public:
     }
 };
 
-bool isFull(queue *q)
+bool isFull(queue *que)
 {
-    if (q->end == q->size - 1)
+    if (que->end == que->size - 1)
     {
         return true;
     }
     return false;
 }
 
-bool isEmpty(queue *q)
+bool isEmpty(queue *que)
 {
-    if (q->end == q->start)
+    if (que->end == que->start)
     {
         return true;
     }
     return false;
 }
 
-void enqueue(queue *q, int val)
+void enqueue(queue *que, int val)
 {
-    if (isFull(q))
+    if (isFull(que))
     {
         cout << "Queue Overflowed";
     }
-    q->end++;
-    q->arr[q->end] = val;
+    que->end++;
+    que->arr[que->end] = val;
 }
 
-void dequeue(queue *q)
+void dequeue(queue *que)
 {
     int value = -1;
-    if (isEmpty(q))
+    if (isEmpty(que))
     {
         cout << "Queue Underflowed\n";
     }
     else
     {
-        q->start++;
-        q->size++;
+        que->start++;
+        que->size++;
     }
 }
 
-void Display(queue *q)
+void Display(queue *que)
 {
-    for (int i = q->start + 1; i <= q->end; i++)
+    for (int i = que->start + 1; i <= que->end; i++)
     {
-        cout << q->arr[i] << ", ";
+        cout << que->arr[i] << ", ";
     }
     cout<<endl;
 }
 
 int main()
 {
-    queue *que = new queue(10);
+    queue *que1 = new queue(10);
 
     cout << "Before Deque: \n";
-    enqueue(que, 1);
-    enqueue(que, 2);
-    enqueue(que, 3);
-    enqueue(que, 4);
-    enqueue(que, 5);
-    enqueue(que, 6);
-    Display(que);
+    enqueue(que1, 1);
+    enqueue(que1, 2);
+    enqueue(que1, 3);
+    enqueue(que1, 4);
+    enqueue(que1, 5);
+    enqueue(que1, 6);
+    Display(que1);
     cout << "After Deque: \n";
-    dequeue(que);
-    dequeue(que);
-    dequeue(que);
-    Display(que);
+    dequeue(que1);
+    dequeue(que1);
+    dequeue(que1);
+    Display(que1);
 }
 
