@@ -9,14 +9,14 @@ using namespace std;
 template <typename T>
 class Node 
 {
+public:
     T data;
     Node* next;
 
-public:
-    Node(T data = 0, Node* next = nullptr) : data(data), next(next) 
+    Node(T data = 0, Node* next = NULL) : data(data), next(next) 
     {}
 
-    friend class Stack<T>;
+   // friend class Stack<T>;
 };
 
 template <typename T>
@@ -28,7 +28,7 @@ private:
 public:
     Stack() 
     {
-        top = nullptr;
+        top = NULL;
     }
 
     void push(int x) 
@@ -39,10 +39,10 @@ public:
 
     T pop() 
     {
-        if (top == nullptr) 
+        if (top == NULL) 
         {
             cout << "Stack underflow\n";
-            return;
+            return -1;
         }
         Node<T>* temp = top;
         T value = top->data;
@@ -53,36 +53,37 @@ public:
 
     bool isEmpty() 
     {
-        return top == nullptr;
+        return top == NULL;
     }
 
     void DisplayStack() 
     {
-        if (top == nullptr) 
+        if (top == NULL) 
         {
             cout << "Stack is Empty\n";
             return;
         }
         Node<T>* temp = top;
         cout << "Stack elements: ";
-        while (temp != nullptr) 
+        while (temp != NULL) 
         {
-            cout << temp->data << " ";
+            cout << temp->data << ", ";
             temp = temp->next;
         }
         cout << endl;
     }
 };
 
-void Sep_Even_Odd(Stack &arr, Stack &E, Stack &O) {
+template <typename T>
+void Sep_Even_Odd(Stack<T> &arr, Stack<T> &E, Stack<T> &O) {
     if (arr.isEmpty()) {
         cout << "Stack is Empty\n";
         return;
     }
 
-    int val;
+    T val;
     while (!arr.isEmpty()) {
-        arr.pop(val);
+        val=arr.pop();
         if (val % 2 == 0) {
             E.push(val);
         } else {
@@ -92,27 +93,26 @@ void Sep_Even_Odd(Stack &arr, Stack &E, Stack &O) {
 }
 
 int main() {
-    Stack s1;
-    Stack Even;
-    Stack Odd;
+    Stack<int> s1;
+    Stack<int> Even;
+    Stack<int> Odd;
 
     s1.push(10);
     s1.push(20);
     s1.push(30);
-    s1.push(5);
-    s1.push(7);
-    s1.push(1);
-    s1.push(2);
-    s1.push(3);
+    s1.push(11);
+    s1.push(27);
+    s1.push(31);
+    s1.push(24);
+    s1.push(53);
 
     s1.DisplayStack();
     Sep_Even_Odd(s1, Even, Odd);
 
-    cout << "Even ";
+    cout << "Even Stack after Sepration: ";
     Even.DisplayStack();
-    cout << "Odd ";
+    cout << "Odd Stack after Sepration: ";
     Odd.DisplayStack();
 
     return 0;
 }
-
