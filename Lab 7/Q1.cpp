@@ -131,10 +131,11 @@ int main()
 
     cout << "Original List: ";
     list.printList();
+
     list.quickSortList();
+
     cout << "Sorted List: ";
     list.printList();
 
     return 0;
 }
-
