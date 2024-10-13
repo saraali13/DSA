@@ -22,12 +22,12 @@ int main()
 //taking number of seats and names input from user
     for (int i = 0; i < rows; i++) 
 	{
-		cout<<"Enter Data for Row "<<i+1<<": "<<endl;
-        cout <<"Enter the number of seats: ";
-        cin >> Row[i];
+	  cout<<"Enter Data for Row "<<i+1<<": "<<endl;
+          cout <<"Enter the number of seats: ";
+          cin >> Row[i];
 
         for (int j = 0; j < Row[i]; j++) 
-		{
+	{
             cout << "Enter the name of person for seat " << j + 1 << ": ";
             cin >> seatingChart[i][j];
         }
@@ -37,9 +37,9 @@ int main()
     cout << "\n\n/Seating Chart:\n";
     for (int i = 0; i < rows; i++) 
 	{
-        cout << "Row " << i + 1 << ": ";
-        for (int j = 0; j < Row[i]; j++) 
-		{
+          cout << "Row " << i + 1 << ": ";
+          for (int j = 0; j < Row[i]; j++) 
+	{
             cout << seatingChart[i][j] << "| ";
         }
         cout << endl;
