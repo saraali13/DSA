@@ -3,12 +3,10 @@ Name:S.Sara Ali
 ID:23K-0070
 */
 
-
 #include <iostream>
-#include<vector>
 using namespace std;
 
-class node
+class node 
 {
     string data;
     node *right;
@@ -20,27 +18,27 @@ public:
     friend class BST;
 };
 
-class BST
+class BST 
 {
     node *head;
 
-    node* insertion(node *head, string data)
-    {
-        if (head == NULL)
-        {
+    node* insertion(node *head, string data) 
+	{
+        if (head == NULL) 
+		{
             return new node(data);
         }
 
-        if (head->data == data)
-        {
+        if (head->data == data) 
+		{
             return head;
         }
-        if (data < head->data)
-        {
+        if (data < head->data) 
+		{
             head->left = insertion(head->left, data);
-        }
-        else
-        {
+        } 
+		else 
+		{
             head->right = insertion(head->right, data);
         }
         return head;
@@ -49,16 +47,16 @@ class BST
 public:
     BST() : head(NULL) {}
 
-    void insert(string data)
-    {
+    void insert(string data) 
+	{
         head = insertion(head, data);
     }
 
-    void preOrderTraversal(node *root)
-    {
-        if (root == NULL)
+    void preOrderTraversal(node *root) 
+	{
+        if (root == NULL) 
 		{
-            cout<<"NULL ";
+            cout << "NULL ";
             return;
         }
 
@@ -67,36 +65,30 @@ public:
         preOrderTraversal(root->right);
     }
 
-    void traverse()
-    {
+    void traverse() 
+	{
         preOrderTraversal(head);
     }
 
-    void transfer(node* root,vector<string>& s)
+    void transfer(node *root, BST &newTree) 
 	{
-        node* newPtr = NULL;
         if (root == NULL)
             return;
 
-        s.push_back(root->data);
-        transfer(root->left,s);
-        transfer(root->right,s);
+        newTree.insert(root->data);  // Directly insert the current node's data into the new tree
+        transfer(root->left, newTree);   // Recursively transfer the left subtree
+        transfer(root->right, newTree);  // Recursively transfer the right subtree
     }
 
-    BST catchtree()
+    BST catchtree() 
 	{
-        vector<string> s;
-        transfer(head,s);
         BST newTree;
-        for (int i = 0; i < s.size(); i++)
-        {
-            newTree.insert(s[i]);
-        }
+        transfer(head, newTree);
         return newTree;
     }
 };
 
-int main()
+int main() 
 {
     BST tree1;
     tree1.insert("4");
